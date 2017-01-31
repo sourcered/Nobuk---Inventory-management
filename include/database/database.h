@@ -3,16 +3,6 @@
 
 #include "querys.h"
 
-#ifndef MYSQL_INCLUDES
-#define MYSQL_INCLUDES
-#include "mysql_connection.h"                   //Improve build time
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/resultset.h>
-#include <cppconn/statement.h>
-#include <cppconn/prepared_statement.h>
-#endif
-
 namespace nobuk
 {
     struct Product
@@ -47,6 +37,7 @@ namespace nobuk
     class I_database
     {
     private:
+        //Duplicated, Yeah i know :(
         Factory factory;
     public:
         bool add_product(Product *);
