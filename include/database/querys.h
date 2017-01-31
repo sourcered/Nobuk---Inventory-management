@@ -9,7 +9,9 @@
 #define PRE_LOG
 const std::string DATABASE_NAME = "dbnobuk";
 const std::string TABLE_NAME = "inventory";
+const std::string USER = "root";
 const std::string PASSWORD = "friday19";
+const std::string DRIVER_URL = "tcp://127.0.0.1:3306";
 #endif
 
 const std::string SQL_CREATE_DATABASE = "CREATE DATABASE IF NOT EXISTS " + DATABASE_NAME;
