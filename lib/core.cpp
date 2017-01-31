@@ -2,27 +2,27 @@
 
 namespace nobuk
 {
-    bool add_product(Product *)
-    {
-        return false;
-    } 
-    
-    bool delete_product(int)
+    bool add_product(Product * product)
     {
         return false;
     }
-    
-    bool add_quantity(int, float)
+
+    bool delete_product(int id)
     {
         return false;
     }
-    
-    bool remove_quantity(int, float)
+
+    bool add_quantity(int id, float quantity)
     {
         return false;
     }
-    
-    bool update_product(Product *)
+
+    bool remove_quantity(int id, float quantity)
+    {
+        return false;
+    }
+
+    bool update_product(Product * product)
     {
         return false;
     }

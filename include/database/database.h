@@ -24,11 +24,17 @@ namespace nobuk
         float total;
     };
 
+    class Factory
+    {
+    public:
+
+    };
+
     class O_database
     {
     public:
         std::list<Product> get_Products();
-        Product get_Product();
+        Product get_Product(); //add 1 parameter int id
         std::list<float> get_Quantitys();           //Returns quantity product
         float get_Quantity(int);                    //Returns quantity product
     };

@@ -8,7 +8,7 @@ namespace nobuk
     class Core
     {
     public:
-        bool add_product(Product *); 
+        bool add_product(Product *);
         bool delete_product(int);
         bool add_quantity(int, float);
         bool remove_quantity(int, float);

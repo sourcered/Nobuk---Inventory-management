@@ -18,12 +18,12 @@ namespace nobuk
     {
         std::list<float> list;
         return list;
-    }    
-        
+    }
+
     float O_database::get_Quantity(int code)
     {
         return 0.0f;
-    }            
+    }
 
     bool I_database::add_product(Product * product)
     {
@@ -43,5 +43,5 @@ namespace nobuk
     bool I_database::update_quantity(int code, float quantity)
     {
         return false;
-    }       
+    }
 }
