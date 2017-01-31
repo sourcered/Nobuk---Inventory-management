@@ -7,16 +7,19 @@ namespace nobuk
         std::list<Product> list;
         return list;
     }
+
     Product O_database::get_Product()
     {
         Product product;
         return product;
     }
+
     std::list<float> O_database::get_Quantitys()
     {
         std::list<float> list;
         return list;
-    }        
+    }    
+        
     float O_database::get_Quantity(int code)
     {
         return 0.0f;

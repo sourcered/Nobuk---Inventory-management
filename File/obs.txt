@@ -1,0 +1,2 @@
+Compile flags:
+sudo g++ -std=c++14 -Wall -I/usr/include/cppconn -o out/console-debug console-debug.cpp lib/core.cpp lib/database/database.cpp -L/usr/lib -lmysqlcppconn
