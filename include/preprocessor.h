@@ -20,5 +20,7 @@
 #include <cppconn/prepared_statement.h>
 #endif
 
+#define for_iterator(it, STL) for(auto it = STL.begin(); it != STL.end(); it++)
+#define f(i, count) for(size_t i = 0; i < count; i++)
 
 #endif

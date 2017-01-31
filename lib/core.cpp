@@ -2,28 +2,31 @@
 
 namespace nobuk
 {
-    bool add_product(Product * product)
+    bool Core::add_product(Product * product)
     {
-        return false;
+        return ioDatabase->add_product(product);
     }
 
-    bool delete_product(int id)
+    bool Core::delete_product(int id)
     {
-        return false;
+        return ioDatabase->delete_product(id);
     }
 
-    bool add_quantity(int id, float quantity)
+    bool Core::add_quantity(int id, float quantity)
     {
-        return false;
+        float qtd = ioDatabase->get_Quantity(id);
+        return ioDatabase->update_quantity(id, (qtd + quantity));
     }
 
-    bool remove_quantity(int id, float quantity)
+    bool Core::remove_quantity(int id, float quantity)
     {
-        return false;
+        float qtd = ioDatabase->get_Quantity(id);
+        if(qtd - quantity < 0) return false;
+        return ioDatabase->update_quantity(id, (qtd - quantity));
     }
 
-    bool update_product(Product * product)
+    bool Core::update_product(Product * product)
     {
-        return false;
+        return ioDatabase->update_product(product);
     }
 }
