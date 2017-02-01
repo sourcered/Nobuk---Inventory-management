@@ -9,7 +9,7 @@ namespace nobuk
     {
     public:
         void printList(const std::list<float> &);
-        void printProduct(const std::list<Product> &);
+        void printProducts(const std::list<Product> &);
     };
 }
 

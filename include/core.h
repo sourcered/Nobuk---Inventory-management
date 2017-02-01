@@ -17,6 +17,7 @@ namespace nobuk
         bool add_quantity(int, float);
         bool remove_quantity(int, float);
         bool update_product(Product *);
+        bool delete_database(int);
     };
 }
 

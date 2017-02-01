@@ -7,11 +7,15 @@ namespace nobuk
         for_iterator(it, l) std::cout << *it << std::endl;
     }
 
-    void Log::printProduct(const std::list<Product> & p)
+    void Log::printProducts(const std::list<Product> & p)
     {
         for_iterator(it, p)
         {
-          // std::cout << (*it).name << std::endl;
+          std::cout << "ID: " << (*it).id << std::endl;
+          std::cout << "Code: " << (*it).code << std::endl;
+          std::cout << "Name: " << (*it).name << std::endl;
+          std::cout << "Quantity: " << (*it).quantity << std::endl;
+          std::cout << "Price: " << (*it).price << std::endl << std::endl;
         }
     }
 }

@@ -29,4 +29,9 @@ namespace nobuk
     {
         return ioDatabase->update_product(product);
     }
+
+    bool Core::delete_database(int key)
+    {
+        return (key == Key ? ioDatabase->drop_database() : false);
+    }
 }

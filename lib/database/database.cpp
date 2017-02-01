@@ -43,8 +43,7 @@ namespace nobuk
             factory.pstm = factory.con->prepareStatement(SQL_GET_PRODUCTS);
             factory.rs = factory.pstm->executeQuery();
             factory.rs->first();
-            // while(factory.rs->next())
-            for(; factory.rs->next() ;)
+            do
             {
                 product.id = factory.rs->getInt("id");
                 product.name = factory.rs->getString("name");
@@ -54,6 +53,7 @@ namespace nobuk
                 // product.total = ;
                 listProducts.push_back(product);
             }
+            while(factory.rs->next());
         }
         catch(sql::SQLException & ex) { std::cout << "Error: get_Products" << std::endl; }
 
@@ -124,7 +124,7 @@ namespace nobuk
           factory.pstm->setInt(1, id);
           factory.rs = factory.pstm->executeQuery();
           factory.rs->first();
-          quantity = static_cast<float>(factory.rs->getDouble("quantity"));
+          quantity = static_cast<float>(factory.rs->getDouble("total"));
       }
       catch(sql::SQLException & ex) { std::cout << "Error: get_Total" << std::endl; }
       return quantity;
@@ -190,6 +190,64 @@ namespace nobuk
         return false;
     }
 
+    bool I_database::update_price(int id, float price)
+    {
+        try
+        {
+            factory.pstm = factory.con->prepareStatement(SQL_UPDATE_PRICE);
+            factory.pstm->setDouble(1, price);
+            factory.pstm->setInt(2, id);
+            factory.pstm->executeUpdate();
+            return true;
+        }
+        catch(sql::SQLException & ex) { std::cout << "Error: update_quantity" << std::endl; }
+        return false;
+    }
+
+    bool I_database::adjust_totals()
+    {
+        try
+        {
+            factory.stm = factory.con->createStatement();
+            factory.rs = factory.stm->executeQuery(SQL_GET_TOTALs);
+            factory.rs->first();
+
+            factory.pstm = factory.con->prepareStatement(SQL_UPDATE_TOTAL);
+            float total;
+            int i = 1;
+            do
+            {
+              total = factory.rs->getDouble(1);
+              factory.pstm->setInt(1,total);
+              factory.pstm->setInt(2,i);
+              factory.pstm->executeUpdate();
+              i++;
+            }
+            while(factory.rs->next());
+        }
+        catch(sql::SQLException & ex) { std::cout << "Error: adjust_total" << std::endl; }
+        return false;
+    }
+
+    bool I_database::adjust_total(int id)
+    {
+        try
+        {
+            factory.pstm = factory.con->prepareStatement(SQL_GET_TOTAL1);
+            factory.pstm->setInt(1,id);
+            factory.rs = factory.pstm->executeQuery();
+            factory.rs->first();
+            float total = static_cast<float>(factory.rs->getDouble(1));
+
+            factory.pstm = factory.con->prepareStatement(SQL_UPDATE_TOTAL);
+            factory.pstm->setInt(1,total);
+            factory.pstm->setInt(2,id);
+            factory.pstm->executeUpdate();
+        }
+        catch(sql::SQLException & ex) { std::cout << "Error: adjust_total" << std::endl; }
+        return false;
+    }
+
     bool I_database::update_ids()
     {
       try
@@ -209,13 +267,27 @@ namespace nobuk
     {
     }
 
-    bool drop_database()
+    bool IO_database::drop_database()
     {
+      try
+      {
+          factory.stm = factory.con->createStatement();
+          factory.stm->executeUpdate(SQL_DP_DATABASE);
+          return true;
+      }
+      catch(sql::SQLException & ex) { std::cout << "Error: drop_database" << std::endl; }
       return false;
     }
 
-    bool drop_table()
+    bool IO_database::drop_table()
     {
+      try
+      {
+          factory.stm = factory.con->createStatement();
+          factory.stm->executeUpdate(SQL_DP_TABLE);
+          return true;
+      }
+      catch(sql::SQLException & ex) { std::cout << "Error: drop_table" << std::endl; }
       return false;
     }
 

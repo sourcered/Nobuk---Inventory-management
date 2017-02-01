@@ -30,9 +30,9 @@ namespace nobuk
 
     class O_database
     {
-    private:
-        Factory factory;
+    protected:
     public:
+        Factory factory;
         std::list<Product> get_Products();
         Product get_Product(int);
         std::list<float> get_Quantitys();           //Returns quantity product
@@ -40,24 +40,23 @@ namespace nobuk
         float get_Total(int);
     };
 
-    class I_database
+    class I_database : public O_database
     {
-    private:
-        //Duplicated, Yeah i know :(
-        Factory factory;
     public:
         bool add_product(Product *);
         bool delete_product(int);
         bool update_product(Product *);
         bool update_quantity(int, float);           //Add and Remove quantity
+        bool update_price(int, float);
+        bool adjust_totals();
+        bool adjust_total(int);
         bool update_ids();
     };
 
-    class IO_database : public I_database, public O_database
+    class IO_database : public I_database
     {
     public:
         IO_database();
-    // protected:
         bool drop_database();
         bool drop_table();
     };
