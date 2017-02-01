@@ -31,8 +31,8 @@ namespace nobuk
     class O_database
     {
     protected:
-    public:
         Factory factory;
+    public:
         std::list<Product> get_Products();
         Product get_Product(int);
         std::list<float> get_Quantitys();           //Returns quantity product
