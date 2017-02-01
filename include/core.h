@@ -8,8 +8,9 @@ namespace nobuk
     class Core
     {
     private:
-        IO_database * ioDatabase;
+        // IO_database * ioDatabase;
     public:
+        IO_database * ioDatabase;
         Core() : ioDatabase(new IO_database()) {}
         bool add_product(Product *);
         bool delete_product(int);

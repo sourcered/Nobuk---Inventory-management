@@ -1,0 +1,1 @@
+# Add threads when acess database because is a slow procession

@@ -89,9 +89,11 @@ namespace nobuk
             factory.stm = factory.con->createStatement();
             factory.rs = factory.stm->executeQuery(SQL_GET_QUANTITYS);
             factory.rs->first();
-            // while (factory.rs->next())
-            for (; factory.rs->next() ;)
+            do
+            {
               list.push_back(static_cast<float>(factory.rs->getDouble("quantity")));
+            }
+            while(factory.rs->next());
         }
         catch(sql::SQLException & ex) { std::cout << "Error: get_Quantitys" << std::endl; }
 
@@ -188,7 +190,7 @@ namespace nobuk
         return false;
     }
 
-    bool I_database::update_positions()
+    bool I_database::update_ids()
     {
       try
       {
@@ -198,7 +200,7 @@ namespace nobuk
           factory.stm->executeUpdate(SQL_ADD_ID_COLUMN);
           return true;
       }
-      catch(sql::SQLException & ex) { return false; }
+      catch(sql::SQLException & ex) { std::cout << "Error: update_ids" << std::endl; }
 
       return false;
     }
@@ -206,4 +208,15 @@ namespace nobuk
     IO_database::IO_database()
     {
     }
+
+    bool drop_database()
+    {
+      return false;
+    }
+
+    bool drop_table()
+    {
+      return false;
+    }
+
 }

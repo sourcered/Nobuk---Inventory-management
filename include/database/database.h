@@ -50,13 +50,16 @@ namespace nobuk
         bool delete_product(int);
         bool update_product(Product *);
         bool update_quantity(int, float);           //Add and Remove quantity
-        bool update_positions();
+        bool update_ids();
     };
 
     class IO_database : public I_database, public O_database
     {
     public:
         IO_database();
+    // protected:
+        bool drop_database();
+        bool drop_table();
     };
 }
 

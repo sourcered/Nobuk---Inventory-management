@@ -34,6 +34,8 @@ const std::string SQL_UPDATE_PRODUCT =  "UPDATE " + TABLE_NAME + " SET code=?, n
 const std::string SQL_DROP_ID =         "ALTER TABLE " + TABLE_NAME + " DROP id";
 const std::string SQL_AUTOINCREMENT_1 = "ALTER TABLE " + TABLE_NAME + " AUTO_INCREMENT = 1";
 const std::string SQL_ADD_ID_COLUMN =   "ALTER TABLE " + TABLE_NAME + " ADD id INT NOT NULL PRIMARY KEY AUTO_INCREMENT FIRST";
+const std::string SQL_DROP_DATABASE =   "DROP DATABASE " + DATABASE_NAME;
+const std::string SQL_DROP_TABLE =      "DROP TABLE " + TABLE_NAME;
 
 #else
 constexp std::string SQL_CREATE_DATABASE = "";
