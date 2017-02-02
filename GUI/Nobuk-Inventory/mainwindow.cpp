@@ -34,8 +34,8 @@ void MainWindow::defaultTableWidget()
     TableHeader << "CODE" << "NAME" << "QUANTITY";
     ui->tableWidget->setHorizontalHeaderLabels(TableHeader);
     ui->tableWidget->verticalHeader()->setVisible(false);
-    ui->tableWidget->setColumnWidth(0,123);
-    ui->tableWidget->setColumnWidth(1,573);
+    ui->tableWidget->setColumnWidth(0,61);
+    ui->tableWidget->setColumnWidth(1,634);
     ui->tableWidget->setColumnWidth(2,123);
 
     //No row Edit
