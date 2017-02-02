@@ -1,3 +1,7 @@
 # Add threads when acess database because is a slow procession
 # Get Key from an FILE
 # Get Login and password from an File
+
+
+
+#excute & executeUpdate needs a thread
