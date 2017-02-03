@@ -92,60 +92,109 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionAdd_Item"/>
+   <addaction name="actionDelete_Item"/>
+   <addaction name="separator"/>
+   <addaction name="actionEdit"/>
+   <addaction name="separator"/>
+   <addaction name="actionAdd"/>
+   <addaction name="actionRemove"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionCarregar">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Load.png</normaloff>:/res/Nobuk-Inventory-Icons/Load.png</iconset>
+   </property>
    <property name="text">
     <string>Load</string>
    </property>
   </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Exit.png</normaloff>:/res/Nobuk-Inventory-Icons/Exit.png</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
   </action>
   <action name="actionHelp">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Help.png</normaloff>:/res/Nobuk-Inventory-Icons/Help.png</iconset>
+   </property>
    <property name="text">
     <string>Help</string>
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/About.png</normaloff>:/res/Nobuk-Inventory-Icons/About.png</iconset>
+   </property>
    <property name="text">
     <string>About </string>
    </property>
   </action>
   <action name="actionDelete_All">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Delete_all.png</normaloff>:/res/Nobuk-Inventory-Icons/Delete_all.png</iconset>
+   </property>
    <property name="text">
     <string>Delete All</string>
    </property>
   </action>
   <action name="actionAdd_Item">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Add_Item.png</normaloff>:/res/Nobuk-Inventory-Icons/Add_Item.png</iconset>
+   </property>
    <property name="text">
     <string>Add</string>
    </property>
   </action>
   <action name="actionDelete_Item">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Delete_Item.png</normaloff>:/res/Nobuk-Inventory-Icons/Delete_Item.png</iconset>
+   </property>
    <property name="text">
     <string>Delete</string>
    </property>
   </action>
   <action name="actionAdd">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Add.png</normaloff>:/res/Nobuk-Inventory-Icons/Add.png</iconset>
+   </property>
    <property name="text">
     <string>Add</string>
    </property>
   </action>
   <action name="actionRemove">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Remove.png</normaloff>:/res/Nobuk-Inventory-Icons/Remove.png</iconset>
+   </property>
    <property name="text">
     <string>Remove</string>
    </property>
   </action>
   <action name="actionEdit">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Edit.png</normaloff>:/res/Nobuk-Inventory-Icons/Edit.png</iconset>
+   </property>
    <property name="text">
     <string>Edit</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

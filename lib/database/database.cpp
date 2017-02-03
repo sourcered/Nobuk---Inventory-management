@@ -48,7 +48,7 @@ namespace nobuk
                 product.id = factory.rs->getInt("id");
                 product.name = factory.rs->getString("name");
                 product.code = factory.rs->getInt("code");
-                product.quantity = static_cast<float>(factory.rs->getDouble("quantity"));
+                product.quantity =factory.rs->getDouble("quantity");
                 product.price = static_cast<float>(factory.rs->getDouble("price"));
                 // product.total = ;
                 listProducts.push_back(product);
@@ -102,7 +102,7 @@ namespace nobuk
 
     float O_database::get_Quantity(int id)
     {
-        float quantity = 0.0f;
+        float quantity = -1.0f;
         try
         {
             factory.pstm = factory.con->prepareStatement(SQL_GET_QUANTITY);
@@ -224,6 +224,7 @@ namespace nobuk
               i++;
             }
             while(factory.rs->next());
+            return true;
         }
         catch(sql::SQLException & ex) { std::cout << "Error: adjust_total" << std::endl; }
         return false;
@@ -243,6 +244,7 @@ namespace nobuk
             factory.pstm->setInt(1,total);
             factory.pstm->setInt(2,id);
             factory.pstm->executeUpdate();
+            return true;
         }
         catch(sql::SQLException & ex) { std::cout << "Error: adjust_total" << std::endl; }
         return false;

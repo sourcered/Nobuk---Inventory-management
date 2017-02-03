@@ -15,13 +15,14 @@ namespace nobuk
     bool Core::add_quantity(int id, float quantity)
     {
         float qtd = ioDatabase->get_Quantity(id);
+        if(qtd == -1.0f) return false;
         return ioDatabase->update_quantity(id, (qtd + quantity));
     }
 
     bool Core::remove_quantity(int id, float quantity)
     {
         float qtd = ioDatabase->get_Quantity(id);
-        if(qtd - quantity < 0) return false;
+        if(qtd - quantity < 0 || qtd == -1.0f) return false;
         return ioDatabase->update_quantity(id, (qtd - quantity));
     }
 

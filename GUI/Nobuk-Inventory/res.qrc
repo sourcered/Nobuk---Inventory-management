@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>Nobuk-Inventory-Icons/About.png</file>
+        <file>Nobuk-Inventory-Icons/Add_Item.png</file>
+        <file>Nobuk-Inventory-Icons/Add.png</file>
+        <file>Nobuk-Inventory-Icons/Delete_all.png</file>
+        <file>Nobuk-Inventory-Icons/Delete_Item.png</file>
+        <file>Nobuk-Inventory-Icons/Edit.png</file>
+        <file>Nobuk-Inventory-Icons/Exit.png</file>
+        <file>Nobuk-Inventory-Icons/Find.png</file>
+        <file>Nobuk-Inventory-Icons/Help.png</file>
+        <file>Nobuk-Inventory-Icons/Load.png</file>
+        <file>Nobuk-Inventory-Icons/new.png</file>
+        <file>Nobuk-Inventory-Icons/Remove.png</file>
+        <file>Nobuk-Inventory-Icons/Show_Informations.png</file>
+    </qresource>
+</RCC>
