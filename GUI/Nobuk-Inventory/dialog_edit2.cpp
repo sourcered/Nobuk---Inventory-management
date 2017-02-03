@@ -17,12 +17,13 @@ Dialog_edit2::~Dialog_edit2()
 void Dialog_edit2::on_pushButton_2_clicked()
 {
     nobuk::Product p;
+    p.id = row;
     p.code = ui->spinBox_Code->value();
     p.name = ui->lineEdit_Name->text().toStdString();
     p.price = ui->doubleSpinBox_Price->value();
     p.quantity = ui->doubleSpinBox_Quantity->value();
+    p.isDecimal = ui->checkBox_Kg->isChecked();
 
-    p.id = row;
     //Edit
     if(core->update_product(&p))
         QMessageBox::information(this, "Sucess", "Item Edited.");
@@ -36,14 +37,11 @@ void Dialog_edit2::on_pushButton_clicked()
     this->close();
 }
 
-//void Dialog_edit2::on_pushButton_3_clicked()
-//{
-//}
-
 void Dialog_edit2::attL()
 {
     ui->doubleSpinBox_Price->setValue(price);
     ui->doubleSpinBox_Quantity->setValue(quantity);
     ui->lineEdit_Name->setText(name);
     ui->spinBox_Code->setValue(code);
+    ui->checkBox_Kg->setChecked(isdec);
 }

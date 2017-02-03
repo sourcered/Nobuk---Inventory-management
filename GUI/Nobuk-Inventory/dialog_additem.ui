@@ -39,6 +39,9 @@
            <height>0</height>
           </size>
          </property>
+         <property name="maximum">
+          <number>10000</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -80,6 +83,9 @@
            <height>0</height>
           </size>
          </property>
+         <property name="maximum">
+          <double>10000.989999999999782</double>
+         </property>
         </widget>
        </item>
       </layout>
@@ -106,6 +112,9 @@
            <width>100</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="maximum">
+          <double>10000.000000000000000</double>
          </property>
         </widget>
        </item>

@@ -23,6 +23,7 @@ public:
     int code;
     float price;
     float quantity;
+    int isdec;
     int row;
 
     void attL();

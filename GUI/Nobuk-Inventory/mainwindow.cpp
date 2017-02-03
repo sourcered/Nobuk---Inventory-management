@@ -66,9 +66,10 @@ void MainWindow::addItemTableWidget(int row, QString listItem[])
 
 void MainWindow::addItemTableWidget(int row, nobuk::Product product)
 {
+    QString qtd = QString::number(product.quantity) + (product.isDecimal ? " Kg" : "  ");
     ui->tableWidget->setItem(row, 0, new QTableWidgetItem(QString::number(product.code)));
     ui->tableWidget->setItem(row, 1, new QTableWidgetItem(QString::fromStdString(product.name)));
-    ui->tableWidget->setItem(row, 2, new QTableWidgetItem(QString::number(product.quantity)));
+    ui->tableWidget->setItem(row, 2, new QTableWidgetItem(qtd));
 }
 
 bool MainWindow::updateTableList()
@@ -90,14 +91,25 @@ nobuk::Product MainWindow::get_selected_item_list()
     product.id = row+1;
     product.code = ui->tableWidget->takeItem(row, 0)->text().toInt();
     product.name = ui->tableWidget->takeItem(row, 1)->text().toStdString();
-    product.quantity = ui->tableWidget->takeItem(row, 2)->text().toDouble();
+
+    std::string qtdStr = ui->tableWidget->takeItem(row, 2)->text().toStdString();
+    std::string sub = qtdStr.substr(0, qtdStr.length()-2);
+    product.quantity = QString::fromStdString(sub).toFloat();
+
+    sub = qtdStr.substr(qtdStr.length()-2, qtdStr.length()-1);
+    std::cout << sub << std::endl;
+    product.isDecimal = sub == "Kg";
+
+    product.price = core->ioDatabase->get_price(row+1);
+
     return product;
 }
 
 void MainWindow::showDetailsItem(int row, int column)
 {
     //Show Dialog
-    QMessageBox::information(this, "Informations", "Row index Selected: " + QString::number(row));
+//    QMessageBox::information(this, "Informations", "Row index Selected: " + QString::number(row));
+    QMessageBox::information(this, "Informations", "Total: " + QString::number(core->ioDatabase->get_Total1(row+1)));
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -166,13 +178,17 @@ void MainWindow::on_actionRemove_triggered()
 
 void MainWindow::on_actionEdit_triggered()
 {
-    int row = ui->tableWidget->currentRow();
+    nobuk::Product p = get_selected_item_list();
+    dialogEdit->code =      p.code;
+    dialogEdit->name =      QString::fromStdString(p.name);
+    dialogEdit->quantity =  p.quantity;
+    dialogEdit->price =     p.price;
+    dialogEdit->row =       p.id;
+    dialogEdit->isdec =     p.isDecimal;
 
-    dialogEdit->code = ui->tableWidget->takeItem(row, 0)->text().toInt();
-    dialogEdit->name = ui->tableWidget->takeItem(row, 1)->text();
-    dialogEdit->quantity= ui->tableWidget->takeItem(row, 2)->text().toFloat();
-    dialogEdit->row = row+1;
-    dialogEdit->attL();     //Update fields in Dialogs
+    //Update fields in Dialogs
+    dialogEdit->attL();
+
     dialogEdit->exec();
     updateTableList();
 }

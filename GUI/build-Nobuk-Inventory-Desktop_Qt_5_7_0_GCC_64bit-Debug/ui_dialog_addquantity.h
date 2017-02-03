@@ -40,6 +40,7 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         doubleSpinBox = new QDoubleSpinBox(Dialog_addquantity);
         doubleSpinBox->setObjectName(QStringLiteral("doubleSpinBox"));
+        doubleSpinBox->setMaximum(10001);
 
         verticalLayout->addWidget(doubleSpinBox);
 

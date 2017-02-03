@@ -38,6 +38,8 @@ namespace nobuk
         std::list<float> get_Quantitys();           //Returns quantity product
         float get_Quantity(int);                    //Returns quantity product
         float get_Total(int);
+        float get_Total1(int);
+        float get_price(int);
     };
 
     class I_database : public O_database

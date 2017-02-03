@@ -72,6 +72,7 @@ public:
         sizePolicy.setHeightForWidth(spinBox_Code->sizePolicy().hasHeightForWidth());
         spinBox_Code->setSizePolicy(sizePolicy);
         spinBox_Code->setMinimumSize(QSize(80, 0));
+        spinBox_Code->setMaximum(10000);
 
         horizontalLayout_2->addWidget(spinBox_Code);
 
@@ -105,6 +106,7 @@ public:
         sizePolicy.setHeightForWidth(doubleSpinBox_Quantity->sizePolicy().hasHeightForWidth());
         doubleSpinBox_Quantity->setSizePolicy(sizePolicy);
         doubleSpinBox_Quantity->setMinimumSize(QSize(100, 0));
+        doubleSpinBox_Quantity->setMaximum(10001);
 
         horizontalLayout_4->addWidget(doubleSpinBox_Quantity);
 
@@ -123,6 +125,7 @@ public:
         sizePolicy.setHeightForWidth(doubleSpinBox_Price->sizePolicy().hasHeightForWidth());
         doubleSpinBox_Price->setSizePolicy(sizePolicy);
         doubleSpinBox_Price->setMinimumSize(QSize(100, 0));
+        doubleSpinBox_Price->setMaximum(10000);
 
         horizontalLayout_3->addWidget(doubleSpinBox_Price);
 

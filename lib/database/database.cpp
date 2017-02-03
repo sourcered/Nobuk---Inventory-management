@@ -48,9 +48,10 @@ namespace nobuk
                 product.id = factory.rs->getInt("id");
                 product.name = factory.rs->getString("name");
                 product.code = factory.rs->getInt("code");
-                product.quantity =factory.rs->getDouble("quantity");
+                product.quantity = factory.rs->getDouble("quantity");
                 product.price = static_cast<float>(factory.rs->getDouble("price"));
-                // product.total = ;
+                product.total = factory.rs->getDouble("total");
+                product.isDecimal = factory.rs->getBoolean("isdec");
                 listProducts.push_back(product);
             }
             while(factory.rs->next());
@@ -124,10 +125,44 @@ namespace nobuk
           factory.pstm->setInt(1, id);
           factory.rs = factory.pstm->executeQuery();
           factory.rs->first();
-          quantity = static_cast<float>(factory.rs->getDouble("total"));
+          quantity = factory.rs->getDouble("total");
+          std::cout << "Total: " << quantity << std::endl;
       }
       catch(sql::SQLException & ex) { std::cout << "Error: get_Total" << std::endl; }
       return quantity;
+    }
+
+    float O_database::get_Total1(int id)
+    {
+      float quantity = 0.0f;
+      try
+      {
+          factory.pstm = factory.con->prepareStatement(SQL_GET_TOTAL1);
+          factory.pstm->setInt(1, id);
+          factory.rs = factory.pstm->executeQuery();
+          factory.rs->first();
+          quantity = factory.rs->getDouble(1);
+          std::cout << "Total: " << quantity << std::endl;
+      }
+      catch(sql::SQLException & ex) { std::cout << "Error: get_Total1" << std::endl; }
+      return quantity;
+    }
+
+    float O_database::get_price(int id)
+    {
+        float quantity = 0.0f;
+        try
+        {
+            factory.pstm = factory.con->prepareStatement(SQL_GET_PRICE);
+            factory.pstm->setInt(1, id);
+            factory.rs = factory.pstm->executeQuery();
+            factory.rs->first();
+            quantity = factory.rs->getDouble("price");
+//            std::cout << "5" << std::endl;
+            std::cout << quantity << std::endl;
+        }
+        catch(sql::SQLException & ex) { std::cout << "Error: get_price" << std::endl; }
+        return quantity;
     }
 
     bool I_database::add_product(Product * product)
@@ -139,6 +174,7 @@ namespace nobuk
             factory.pstm->setString(2, product->name);
             factory.pstm->setDouble(3, product->quantity);
             factory.pstm->setDouble(4, product->price);
+            factory.pstm->setDouble(5, product->isDecimal);
             factory.pstm->executeUpdate();
             return true;
         }
@@ -168,7 +204,8 @@ namespace nobuk
             factory.pstm->setString(2, product->name);
             factory.pstm->setDouble(3, product->quantity);
             factory.pstm->setDouble(4, product->price);
-            factory.pstm->setInt(5, product->id);
+            factory.pstm->setDouble(5, product->isDecimal);
+            factory.pstm->setInt(6, product->id);
             factory.pstm->executeUpdate();
             return true;
         }
