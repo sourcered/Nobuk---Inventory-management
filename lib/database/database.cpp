@@ -126,7 +126,6 @@ namespace nobuk
           factory.rs = factory.pstm->executeQuery();
           factory.rs->first();
           quantity = factory.rs->getDouble("total");
-          std::cout << "Total: " << quantity << std::endl;
       }
       catch(sql::SQLException & ex) { std::cout << "Error: get_Total" << std::endl; }
       return quantity;
@@ -142,7 +141,6 @@ namespace nobuk
           factory.rs = factory.pstm->executeQuery();
           factory.rs->first();
           quantity = factory.rs->getDouble(1);
-          std::cout << "Total: " << quantity << std::endl;
       }
       catch(sql::SQLException & ex) { std::cout << "Error: get_Total1" << std::endl; }
       return quantity;
@@ -158,8 +156,6 @@ namespace nobuk
             factory.rs = factory.pstm->executeQuery();
             factory.rs->first();
             quantity = factory.rs->getDouble("price");
-//            std::cout << "5" << std::endl;
-            std::cout << quantity << std::endl;
         }
         catch(sql::SQLException & ex) { std::cout << "Error: get_price" << std::endl; }
         return quantity;

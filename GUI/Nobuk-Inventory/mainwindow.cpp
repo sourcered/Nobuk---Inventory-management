@@ -3,7 +3,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    core(nullptr)
 {
     ui->setupUi(this);
 
@@ -46,7 +47,7 @@ void MainWindow::defaultTableWidget()
     ui->tableWidget->setHorizontalHeaderLabels(TableHeader);
     ui->tableWidget->verticalHeader()->setVisible(false);
     ui->tableWidget->setColumnWidth(0,61);          //61
-    ui->tableWidget->setColumnWidth(1,634);         //634
+    ui->tableWidget->setColumnWidth(1,620);         //634
     ui->tableWidget->setColumnWidth(2,102);         //123
 
     //No row Edit
@@ -136,6 +137,11 @@ void MainWindow::on_actionCarregar_triggered()
 
 void MainWindow::on_actionDelete_All_triggered()
 {
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
     //Dialog
     int key = 0;    //1977
     if(core->delete_database(key)) QMessageBox::information(this, "Database", "All data has been deleted.");
@@ -145,6 +151,11 @@ void MainWindow::on_actionDelete_All_triggered()
 
 void MainWindow::on_actionAdd_Item_triggered()
 {
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
     dialogAddItem->exec();
     //Update table
     updateTableList();
@@ -152,6 +163,11 @@ void MainWindow::on_actionAdd_Item_triggered()
 
 void MainWindow::on_actionDelete_Item_triggered()
 {
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
     dialogRemoveitem->row = ui->tableWidget->currentRow() + 1;
     dialogRemoveitem->exec();
     core->ioDatabase->update_ids();
@@ -161,6 +177,11 @@ void MainWindow::on_actionDelete_Item_triggered()
 
 void MainWindow::on_actionAdd_triggered()
 {
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
     dialogAddquantity->row = ui->tableWidget->currentRow() + 1;
     dialogAddquantity->exec();
     //Update table
@@ -169,6 +190,11 @@ void MainWindow::on_actionAdd_triggered()
 
 void MainWindow::on_actionRemove_triggered()
 {
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
     dialogRemoveQuantity->row = ui->tableWidget->currentRow() + 1;
     dialogRemoveQuantity->exec();
     //Update table
@@ -177,6 +203,11 @@ void MainWindow::on_actionRemove_triggered()
 
 void MainWindow::on_actionEdit_triggered()
 {
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
     nobuk::Product p = get_selected_item_list();
     dialogEdit->code =      p.code;
     dialogEdit->name =      QString::fromStdString(p.name);
@@ -191,5 +222,3 @@ void MainWindow::on_actionEdit_triggered()
     dialogEdit->exec();
     updateTableList();
 }
-
-//Make a method get row index table and execute operation
