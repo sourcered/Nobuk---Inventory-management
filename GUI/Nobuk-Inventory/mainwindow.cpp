@@ -97,7 +97,6 @@ nobuk::Product MainWindow::get_selected_item_list()
     product.quantity = QString::fromStdString(sub).toFloat();
 
     sub = qtdStr.substr(qtdStr.length()-2, qtdStr.length()-1);
-    std::cout << sub << std::endl;
     product.isDecimal = sub == "Kg";
 
     product.price = core->ioDatabase->get_price(row+1);
