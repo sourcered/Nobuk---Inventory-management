@@ -1,7 +1,7 @@
-# Add threads when acess database because is a slow procession
-# Get Key from an FILE
-# Get Login and password from an File
+# Add threads when acess database because is a slow process
+# Get Key from a FILE
+# Get Login and password from a File
 
 
 
-#excute & executeUpdate needs a thread
+#Excute & executeUpdate needs a thread
