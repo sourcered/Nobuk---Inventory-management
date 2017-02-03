@@ -10,7 +10,7 @@
 #include "dialog_addquantity.h"
 #include "dialog_additem.h"
 #include "dialog_removeitem.h"
-#include "dialog_edit.h"
+#include "dialog_edit2.h"
 
 namespace Ui {
 class MainWindow;
@@ -36,7 +36,7 @@ private:
     Dialog_removeitem * dialogRemoveitem;
     Dialog_addquantity * dialogAddquantity;
     Dialog_removeQuantity * dialogRemoveQuantity;
-    Dialog_edit * dialogEdit;
+    Dialog_edit2 * dialogEdit;
     Dialog_exit * dialogExit;
 
 public slots:

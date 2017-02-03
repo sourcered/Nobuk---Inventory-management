@@ -17,9 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     dialogRemoveitem = new Dialog_removeitem(this);
     dialogRemoveQuantity = new Dialog_removeQuantity(this);
     dialogExit = new Dialog_exit(this);
-    dialogEdit = new Dialog_edit(this);
+    dialogEdit = new Dialog_edit2(this);
     dialogAddquantity = new Dialog_addquantity(this);
     dialogAddItem = new Dialog_additem(this);
+    dialogEdit->product = new nobuk::Product();
     //Well done.
     ui->statusBar->showMessage("Wellcome, Nobuk", 5000);
 }
@@ -165,8 +166,14 @@ void MainWindow::on_actionRemove_triggered()
 
 void MainWindow::on_actionEdit_triggered()
 {
+    int row = ui->tableWidget->currentRow();
+
+    dialogEdit->code = ui->tableWidget->takeItem(row, 0)->text().toInt();
+    dialogEdit->name = ui->tableWidget->takeItem(row, 1)->text();
+    dialogEdit->quantity= ui->tableWidget->takeItem(row, 2)->text().toFloat();
+    dialogEdit->row = row+1;
+    dialogEdit->attL();     //Update fields in Dialogs
     dialogEdit->exec();
-    //Update table
     updateTableList();
 }
 

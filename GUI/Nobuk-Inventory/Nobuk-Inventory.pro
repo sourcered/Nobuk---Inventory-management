@@ -24,8 +24,8 @@ SOURCES += main.cpp\
     dialog_removequantity.cpp \
     dialog_addquantity.cpp \
     dialog_removeitem.cpp \
-    dialog_edit.cpp \
-    dialog_additem.cpp
+    dialog_additem.cpp \
+    dialog_edit2.cpp
 
 HEADERS  += mainwindow.h \
     ../../include/database/database.h \
@@ -37,16 +37,16 @@ HEADERS  += mainwindow.h \
     dialog_removequantity.h \
     dialog_addquantity.h \
     dialog_removeitem.h \
-    dialog_edit.h \
-    dialog_additem.h
+    dialog_additem.h \
+    dialog_edit2.h
 
 FORMS    += mainwindow.ui \
     dialog_exit.ui \
     dialog_removequantity.ui \
     dialog_addquantity.ui \
     dialog_removeitem.ui \
-    dialog_edit.ui \
-    dialog_additem.ui
+    dialog_additem.ui \
+    dialog_edit2.ui
 
 RESOURCES += \
     res.qrc
