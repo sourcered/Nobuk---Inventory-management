@@ -45,7 +45,6 @@ public:
     QDoubleSpinBox *doubleSpinBox_Price;
     QCheckBox *checkBox_Kg;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_3;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
 
@@ -143,11 +142,6 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        pushButton_3 = new QPushButton(Dialog_edit2);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-
-        horizontalLayout->addWidget(pushButton_3);
-
         pushButton = new QPushButton(Dialog_edit2);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
@@ -175,7 +169,6 @@ public:
         label_2->setText(QApplication::translate("Dialog_edit2", "Quantity:", 0));
         label_3->setText(QApplication::translate("Dialog_edit2", "Price:", 0));
         checkBox_Kg->setText(QApplication::translate("Dialog_edit2", "Kg", 0));
-        pushButton_3->setText(QApplication::translate("Dialog_edit2", "Update", 0));
         pushButton->setText(QApplication::translate("Dialog_edit2", "Cancel", 0));
         pushButton_2->setText(QApplication::translate("Dialog_edit2", "Edit", 0));
     } // retranslateUi

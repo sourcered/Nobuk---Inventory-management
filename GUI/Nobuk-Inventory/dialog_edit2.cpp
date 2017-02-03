@@ -36,9 +36,9 @@ void Dialog_edit2::on_pushButton_clicked()
     this->close();
 }
 
-void Dialog_edit2::on_pushButton_3_clicked()
-{
-}
+//void Dialog_edit2::on_pushButton_3_clicked()
+//{
+//}
 
 void Dialog_edit2::attL()
 {
