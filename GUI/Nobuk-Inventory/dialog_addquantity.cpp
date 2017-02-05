@@ -14,6 +14,7 @@ Dialog_addquantity::Dialog_addquantity(QWidget *parent) :
 Dialog_addquantity::~Dialog_addquantity()
 {
     delete ui;
+    delete core;
 }
 
 void Dialog_addquantity::on_pushButton_2_clicked()

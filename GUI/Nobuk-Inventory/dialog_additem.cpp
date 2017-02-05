@@ -12,6 +12,7 @@ Dialog_additem::Dialog_additem(QWidget *parent) :
 Dialog_additem::~Dialog_additem()
 {
     delete ui;
+    delete core;
 }
 
 void Dialog_additem::on_pushButton_clicked()

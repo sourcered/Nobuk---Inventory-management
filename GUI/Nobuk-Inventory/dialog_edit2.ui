@@ -149,6 +149,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>spinBox_Code</tabstop>
+  <tabstop>lineEdit_Name</tabstop>
+  <tabstop>doubleSpinBox_Quantity</tabstop>
+  <tabstop>doubleSpinBox_Price</tabstop>
+  <tabstop>checkBox_Kg</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

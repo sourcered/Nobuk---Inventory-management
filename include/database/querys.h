@@ -20,6 +20,7 @@ const std::string SQL_DROP_DATABASE =   "DROP DATABASE " + DATABASE_NAME;
 const std::string SQL_DROP_TABLE =      "DROP TABLE " + TABLE_NAME;
 const std::string SQL_GET_PRODUCTS =    "SELECT * FROM " + TABLE_NAME;
 const std::string SQL_GET_PRODUCT =     "SELECT * FROM " + TABLE_NAME + " WHERE id=? LIMIT 1";
+const std::string SQL_GET_PRODUCT_BY_CODE = "SELECT * FROM " + TABLE_NAME + " WHERE code=? LIMIT 1";
 const std::string SQL_GET_QUANTITYS =   "SELECT quantity FROM " + TABLE_NAME;
 const std::string SQL_GET_QUANTITY =    "SELECT quantity FROM " + TABLE_NAME + " WHERE id=? LIMIT 1";
 const std::string SQL_GET_PRICE =       "SELECT price FROM " + TABLE_NAME + " WHERE id=? LIMIT 1";

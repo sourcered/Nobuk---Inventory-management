@@ -12,6 +12,7 @@ Dialog_edit2::Dialog_edit2(QWidget *parent) :
 Dialog_edit2::~Dialog_edit2()
 {
     delete ui;
+    delete core;
 }
 
 void Dialog_edit2::on_pushButton_2_clicked()

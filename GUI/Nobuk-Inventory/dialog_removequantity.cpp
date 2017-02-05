@@ -14,6 +14,7 @@ Dialog_removeQuantity::Dialog_removeQuantity(QWidget *parent) :
 Dialog_removeQuantity::~Dialog_removeQuantity()
 {
     delete ui;
+    delete core;
 }
 
 void Dialog_removeQuantity::on_pushButton_clicked()

@@ -72,6 +72,8 @@
     <addaction name="actionDelete_Item"/>
     <addaction name="separator"/>
     <addaction name="actionEdit"/>
+    <addaction name="actionInformation"/>
+    <addaction name="actionFInd"/>
    </widget>
    <widget class="QMenu" name="menuQuantity">
     <property name="title">
@@ -96,6 +98,8 @@
    <addaction name="actionDelete_Item"/>
    <addaction name="separator"/>
    <addaction name="actionEdit"/>
+   <addaction name="actionInformation"/>
+   <addaction name="actionFInd"/>
    <addaction name="separator"/>
    <addaction name="actionAdd"/>
    <addaction name="actionRemove"/>
@@ -189,6 +193,24 @@
    </property>
    <property name="text">
     <string>Edit</string>
+   </property>
+  </action>
+  <action name="actionInformation">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Show_Informations.png</normaloff>:/res/Nobuk-Inventory-Icons/Show_Informations.png</iconset>
+   </property>
+   <property name="text">
+    <string>Information</string>
+   </property>
+  </action>
+  <action name="actionFInd">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/Find.png</normaloff>:/res/Nobuk-Inventory-Icons/Find.png</iconset>
+   </property>
+   <property name="text">
+    <string>Find</string>
    </property>
   </action>
  </widget>

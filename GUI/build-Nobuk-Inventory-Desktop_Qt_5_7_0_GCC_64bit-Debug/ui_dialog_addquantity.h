@@ -59,6 +59,8 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        QWidget::setTabOrder(doubleSpinBox, pushButton_2);
+        QWidget::setTabOrder(pushButton_2, pushButton);
 
         retranslateUi(Dialog_addquantity);
 

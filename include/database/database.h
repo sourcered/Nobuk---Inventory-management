@@ -35,6 +35,7 @@ namespace nobuk
     public:
         std::list<Product> get_Products();
         Product get_Product(int);
+        Product get_ProductByCode(int);
         std::list<float> get_Quantitys();           //Returns quantity product
         float get_Quantity(int);                    //Returns quantity product
         float get_Total(int);

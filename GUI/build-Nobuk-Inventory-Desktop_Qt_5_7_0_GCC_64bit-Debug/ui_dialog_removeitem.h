@@ -58,6 +58,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        QWidget::setTabOrder(pushButton_2, pushButton);
 
         retranslateUi(Dialog_removeitem);
 

@@ -155,6 +155,12 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout);
 
+        QWidget::setTabOrder(spinBox_Code, lineEdit_Name);
+        QWidget::setTabOrder(lineEdit_Name, doubleSpinBox_Quantity);
+        QWidget::setTabOrder(doubleSpinBox_Quantity, doubleSpinBox_Price);
+        QWidget::setTabOrder(doubleSpinBox_Price, checkBox_Kg);
+        QWidget::setTabOrder(checkBox_Kg, pushButton_2);
+        QWidget::setTabOrder(pushButton_2, pushButton);
 
         retranslateUi(Dialog_edit2);
 

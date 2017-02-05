@@ -14,6 +14,7 @@ Dialog_removeitem::Dialog_removeitem(QWidget *parent) :
 Dialog_removeitem::~Dialog_removeitem()
 {
     delete ui;
+    delete core;
 }
 
 void Dialog_removeitem::on_pushButton_clicked()

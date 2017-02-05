@@ -11,6 +11,8 @@
 #include "dialog_additem.h"
 #include "dialog_removeitem.h"
 #include "dialog_edit2.h"
+#include "dialog_information.h"
+#include "dialog_find.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,10 +29,13 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    void showMessageStatusbar(QString);
     void defaultTableWidget();
-    void addItemTableWidget(int, QString []);       //Row position, column text
+    void addItemTableWidget(int, QString []);           //Row position, column text
     void addItemTableWidget(int, nobuk::Product);       //Row position, struct Product
     bool updateTableList();
+    bool updateTableList(int);
     nobuk::Product get_selected_item_list();
     Dialog_additem * dialogAddItem;
     Dialog_removeitem * dialogRemoveitem;
@@ -38,9 +43,11 @@ private:
     Dialog_removeQuantity * dialogRemoveQuantity;
     Dialog_edit2 * dialogEdit;
     Dialog_exit * dialogExit;
+    Dialog_information * dialogInformation;
+    Dialog_find * dialogFind;
 
 public slots:
-    void showDetailsItem(int, int);                 //Display Dialog window with informations
+    void showDetailsItem(int, int);                     //Display Dialog window with informations
 
 private slots:
     void on_actionExit_triggered();
@@ -53,6 +60,8 @@ private slots:
     void on_actionAdd_triggered();
     void on_actionRemove_triggered();
     void on_actionEdit_triggered();
+    void on_actionInformation_triggered();
+    void on_actionFInd_triggered();
 };
 
 #endif // MAINWINDOW_H

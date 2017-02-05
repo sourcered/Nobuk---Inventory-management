@@ -58,14 +58,18 @@ SOURCES       = ../Nobuk-Inventory/main.cpp \
 		../Nobuk-Inventory/dialog_addquantity.cpp \
 		../Nobuk-Inventory/dialog_removeitem.cpp \
 		../Nobuk-Inventory/dialog_additem.cpp \
-		../Nobuk-Inventory/dialog_edit2.cpp qrc_res.cpp \
+		../Nobuk-Inventory/dialog_edit2.cpp \
+		../Nobuk-Inventory/dialog_information.cpp \
+		../Nobuk-Inventory/dialog_find.cpp qrc_res.cpp \
 		moc_mainwindow.cpp \
 		moc_dialog_exit.cpp \
 		moc_dialog_removequantity.cpp \
 		moc_dialog_addquantity.cpp \
 		moc_dialog_removeitem.cpp \
 		moc_dialog_additem.cpp \
-		moc_dialog_edit2.cpp
+		moc_dialog_edit2.cpp \
+		moc_dialog_information.cpp \
+		moc_dialog_find.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		database.o \
@@ -77,6 +81,8 @@ OBJECTS       = main.o \
 		dialog_removeitem.o \
 		dialog_additem.o \
 		dialog_edit2.o \
+		dialog_information.o \
+		dialog_find.o \
 		qrc_res.o \
 		moc_mainwindow.o \
 		moc_dialog_exit.o \
@@ -84,7 +90,9 @@ OBJECTS       = main.o \
 		moc_dialog_addquantity.o \
 		moc_dialog_removeitem.o \
 		moc_dialog_additem.o \
-		moc_dialog_edit2.o
+		moc_dialog_edit2.o \
+		moc_dialog_information.o \
+		moc_dialog_find.o
 DIST          = /home/igor/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/igor/Qt/5.7/gcc_64/mkspecs/common/unix.conf \
 		/home/igor/Qt/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -245,7 +253,9 @@ DIST          = /home/igor/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../Nobuk-Inventory/dialog_addquantity.h \
 		../Nobuk-Inventory/dialog_removeitem.h \
 		../Nobuk-Inventory/dialog_additem.h \
-		../Nobuk-Inventory/dialog_edit2.h ../Nobuk-Inventory/main.cpp \
+		../Nobuk-Inventory/dialog_edit2.h \
+		../Nobuk-Inventory/dialog_information.h \
+		../Nobuk-Inventory/dialog_find.h ../Nobuk-Inventory/main.cpp \
 		../Nobuk-Inventory/mainwindow.cpp \
 		../../lib/database/database.cpp \
 		../../lib/console-log.cpp \
@@ -255,7 +265,9 @@ DIST          = /home/igor/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../Nobuk-Inventory/dialog_addquantity.cpp \
 		../Nobuk-Inventory/dialog_removeitem.cpp \
 		../Nobuk-Inventory/dialog_additem.cpp \
-		../Nobuk-Inventory/dialog_edit2.cpp
+		../Nobuk-Inventory/dialog_edit2.cpp \
+		../Nobuk-Inventory/dialog_information.cpp \
+		../Nobuk-Inventory/dialog_find.cpp
 QMAKE_TARGET  = Nobuk-Inventory
 DESTDIR       = 
 TARGET        = Nobuk-Inventory
@@ -264,7 +276,7 @@ TARGET        = Nobuk-Inventory
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_dialog_exit.h ui_dialog_removequantity.h ui_dialog_addquantity.h ui_dialog_removeitem.h ui_dialog_additem.h ui_dialog_edit2.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_dialog_exit.h ui_dialog_removequantity.h ui_dialog_addquantity.h ui_dialog_removeitem.h ui_dialog_additem.h ui_dialog_edit2.h ui_dialog_information.h ui_dialog_find.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Nobuk-Inventory/Nobuk-Inventory.pro /home/igor/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf /home/igor/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
@@ -591,9 +603,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Nobuk-Inventory/res.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Nobuk-Inventory/mainwindow.h ../../include/database/database.h ../../include/database/querys.h ../../include/console-log.h ../../include/core.h ../../include/preprocessor.h ../Nobuk-Inventory/dialog_exit.h ../Nobuk-Inventory/dialog_removequantity.h ../Nobuk-Inventory/dialog_addquantity.h ../Nobuk-Inventory/dialog_removeitem.h ../Nobuk-Inventory/dialog_additem.h ../Nobuk-Inventory/dialog_edit2.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Nobuk-Inventory/main.cpp ../Nobuk-Inventory/mainwindow.cpp ../../lib/database/database.cpp ../../lib/console-log.cpp ../../lib/core.cpp ../Nobuk-Inventory/dialog_exit.cpp ../Nobuk-Inventory/dialog_removequantity.cpp ../Nobuk-Inventory/dialog_addquantity.cpp ../Nobuk-Inventory/dialog_removeitem.cpp ../Nobuk-Inventory/dialog_additem.cpp ../Nobuk-Inventory/dialog_edit2.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Nobuk-Inventory/mainwindow.ui ../Nobuk-Inventory/dialog_exit.ui ../Nobuk-Inventory/dialog_removequantity.ui ../Nobuk-Inventory/dialog_addquantity.ui ../Nobuk-Inventory/dialog_removeitem.ui ../Nobuk-Inventory/dialog_additem.ui ../Nobuk-Inventory/dialog_edit2.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Nobuk-Inventory/mainwindow.h ../../include/database/database.h ../../include/database/querys.h ../../include/console-log.h ../../include/core.h ../../include/preprocessor.h ../Nobuk-Inventory/dialog_exit.h ../Nobuk-Inventory/dialog_removequantity.h ../Nobuk-Inventory/dialog_addquantity.h ../Nobuk-Inventory/dialog_removeitem.h ../Nobuk-Inventory/dialog_additem.h ../Nobuk-Inventory/dialog_edit2.h ../Nobuk-Inventory/dialog_information.h ../Nobuk-Inventory/dialog_find.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Nobuk-Inventory/main.cpp ../Nobuk-Inventory/mainwindow.cpp ../../lib/database/database.cpp ../../lib/console-log.cpp ../../lib/core.cpp ../Nobuk-Inventory/dialog_exit.cpp ../Nobuk-Inventory/dialog_removequantity.cpp ../Nobuk-Inventory/dialog_addquantity.cpp ../Nobuk-Inventory/dialog_removeitem.cpp ../Nobuk-Inventory/dialog_additem.cpp ../Nobuk-Inventory/dialog_edit2.cpp ../Nobuk-Inventory/dialog_information.cpp ../Nobuk-Inventory/dialog_find.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Nobuk-Inventory/mainwindow.ui ../Nobuk-Inventory/dialog_exit.ui ../Nobuk-Inventory/dialog_removequantity.ui ../Nobuk-Inventory/dialog_addquantity.ui ../Nobuk-Inventory/dialog_removeitem.ui ../Nobuk-Inventory/dialog_additem.ui ../Nobuk-Inventory/dialog_edit2.ui ../Nobuk-Inventory/dialog_information.ui ../Nobuk-Inventory/dialog_find.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -637,9 +649,9 @@ qrc_res.cpp: ../Nobuk-Inventory/res.qrc \
 		../Nobuk-Inventory/Nobuk-Inventory-Icons/Help.png
 	/home/igor/Qt/5.7/gcc_64/bin/rcc -name res ../Nobuk-Inventory/res.qrc -o qrc_res.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_dialog_exit.cpp moc_dialog_removequantity.cpp moc_dialog_addquantity.cpp moc_dialog_removeitem.cpp moc_dialog_additem.cpp moc_dialog_edit2.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_dialog_exit.cpp moc_dialog_removequantity.cpp moc_dialog_addquantity.cpp moc_dialog_removeitem.cpp moc_dialog_additem.cpp moc_dialog_edit2.cpp moc_dialog_information.cpp moc_dialog_find.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_dialog_exit.cpp moc_dialog_removequantity.cpp moc_dialog_addquantity.cpp moc_dialog_removeitem.cpp moc_dialog_additem.cpp moc_dialog_edit2.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_dialog_exit.cpp moc_dialog_removequantity.cpp moc_dialog_addquantity.cpp moc_dialog_removeitem.cpp moc_dialog_additem.cpp moc_dialog_edit2.cpp moc_dialog_information.cpp moc_dialog_find.cpp
 moc_mainwindow.cpp: /home/igor/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
 		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
@@ -754,6 +766,8 @@ moc_mainwindow.cpp: /home/igor/Qt/5.7/gcc_64/include/QtWidgets/QMainWindow \
 		../Nobuk-Inventory/dialog_additem.h \
 		../Nobuk-Inventory/dialog_removeitem.h \
 		../Nobuk-Inventory/dialog_edit2.h \
+		../Nobuk-Inventory/dialog_information.h \
+		../Nobuk-Inventory/dialog_find.h \
 		../Nobuk-Inventory/mainwindow.h \
 		/home/igor/Qt/5.7/gcc_64/bin/moc
 	/home/igor/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/igor/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory/-I/usr/include -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory/-I/usr/local/include -I/home/igor/Qt/5.7/gcc_64/include -I/home/igor/Qt/5.7/gcc_64/include/QtWidgets -I/home/igor/Qt/5.7/gcc_64/include/QtGui -I/home/igor/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Nobuk-Inventory/mainwindow.h -o moc_mainwindow.cpp
@@ -1400,11 +1414,219 @@ moc_dialog_edit2.cpp: /home/igor/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
 		/home/igor/Qt/5.7/gcc_64/bin/moc
 	/home/igor/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/igor/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory/-I/usr/include -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory/-I/usr/local/include -I/home/igor/Qt/5.7/gcc_64/include -I/home/igor/Qt/5.7/gcc_64/include/QtWidgets -I/home/igor/Qt/5.7/gcc_64/include/QtGui -I/home/igor/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Nobuk-Inventory/dialog_edit2.h -o moc_dialog_edit2.cpp
 
+moc_dialog_information.cpp: /home/igor/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		../../include/core.h \
+		../../include/database/database.h \
+		../../include/database/querys.h \
+		../../include/preprocessor.h \
+		../Nobuk-Inventory/dialog_information.h \
+		/home/igor/Qt/5.7/gcc_64/bin/moc
+	/home/igor/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/igor/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory/-I/usr/include -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory/-I/usr/local/include -I/home/igor/Qt/5.7/gcc_64/include -I/home/igor/Qt/5.7/gcc_64/include/QtWidgets -I/home/igor/Qt/5.7/gcc_64/include/QtGui -I/home/igor/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Nobuk-Inventory/dialog_information.h -o moc_dialog_information.cpp
+
+moc_dialog_find.cpp: /home/igor/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		../Nobuk-Inventory/dialog_find.h \
+		/home/igor/Qt/5.7/gcc_64/bin/moc
+	/home/igor/Qt/5.7/gcc_64/bin/moc $(DEFINES) -I/home/igor/Qt/5.7/gcc_64/mkspecs/linux-g++ -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory/-I/usr/include -I/home/igor/Documents/GitHub/Nobuk---Inventory-management/GUI/Nobuk-Inventory/-I/usr/local/include -I/home/igor/Qt/5.7/gcc_64/include -I/home/igor/Qt/5.7/gcc_64/include/QtWidgets -I/home/igor/Qt/5.7/gcc_64/include/QtGui -I/home/igor/Qt/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Nobuk-Inventory/dialog_find.h -o moc_dialog_find.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_dialog_exit.h ui_dialog_removequantity.h ui_dialog_addquantity.h ui_dialog_removeitem.h ui_dialog_additem.h ui_dialog_edit2.h
+compiler_uic_make_all: ui_mainwindow.h ui_dialog_exit.h ui_dialog_removequantity.h ui_dialog_addquantity.h ui_dialog_removeitem.h ui_dialog_additem.h ui_dialog_edit2.h ui_dialog_information.h ui_dialog_find.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_dialog_exit.h ui_dialog_removequantity.h ui_dialog_addquantity.h ui_dialog_removeitem.h ui_dialog_additem.h ui_dialog_edit2.h
+	-$(DEL_FILE) ui_mainwindow.h ui_dialog_exit.h ui_dialog_removequantity.h ui_dialog_addquantity.h ui_dialog_removeitem.h ui_dialog_additem.h ui_dialog_edit2.h ui_dialog_information.h ui_dialog_find.h
 ui_mainwindow.h: ../Nobuk-Inventory/mainwindow.ui \
 		/home/igor/Qt/5.7/gcc_64/bin/uic
 	/home/igor/Qt/5.7/gcc_64/bin/uic ../Nobuk-Inventory/mainwindow.ui -o ui_mainwindow.h
@@ -1432,6 +1654,14 @@ ui_dialog_additem.h: ../Nobuk-Inventory/dialog_additem.ui \
 ui_dialog_edit2.h: ../Nobuk-Inventory/dialog_edit2.ui \
 		/home/igor/Qt/5.7/gcc_64/bin/uic
 	/home/igor/Qt/5.7/gcc_64/bin/uic ../Nobuk-Inventory/dialog_edit2.ui -o ui_dialog_edit2.h
+
+ui_dialog_information.h: ../Nobuk-Inventory/dialog_information.ui \
+		/home/igor/Qt/5.7/gcc_64/bin/uic
+	/home/igor/Qt/5.7/gcc_64/bin/uic ../Nobuk-Inventory/dialog_information.ui -o ui_dialog_information.h
+
+ui_dialog_find.h: ../Nobuk-Inventory/dialog_find.ui \
+		/home/igor/Qt/5.7/gcc_64/bin/uic
+	/home/igor/Qt/5.7/gcc_64/bin/uic ../Nobuk-Inventory/dialog_find.ui -o ui_dialog_find.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1558,6 +1788,8 @@ main.o: ../Nobuk-Inventory/main.cpp ../Nobuk-Inventory/mainwindow.h \
 		../Nobuk-Inventory/dialog_additem.h \
 		../Nobuk-Inventory/dialog_removeitem.h \
 		../Nobuk-Inventory/dialog_edit2.h \
+		../Nobuk-Inventory/dialog_information.h \
+		../Nobuk-Inventory/dialog_find.h \
 		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
 		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
 		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1682,6 +1914,8 @@ mainwindow.o: ../Nobuk-Inventory/mainwindow.cpp ../Nobuk-Inventory/mainwindow.h 
 		../Nobuk-Inventory/dialog_additem.h \
 		../Nobuk-Inventory/dialog_removeitem.h \
 		../Nobuk-Inventory/dialog_edit2.h \
+		../Nobuk-Inventory/dialog_information.h \
+		../Nobuk-Inventory/dialog_find.h \
 		ui_mainwindow.h \
 		/home/igor/Qt/5.7/gcc_64/include/QtCore/QVariant \
 		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QAction \
@@ -2608,8 +2842,310 @@ dialog_edit2.o: ../Nobuk-Inventory/dialog_edit2.cpp ../Nobuk-Inventory/dialog_ed
 		../../include/database/database.h \
 		../../include/database/querys.h \
 		../../include/preprocessor.h \
-		ui_dialog_edit2.h
+		ui_dialog_edit2.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/QVariant \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QAction \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QCheckBox \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qcheckbox.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QDoubleSpinBox \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qspinbox.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QHBoxLayout \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QLineEdit \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtextcursor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtextformat.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpen.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QSpinBox \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_edit2.o ../Nobuk-Inventory/dialog_edit2.cpp
+
+dialog_information.o: ../Nobuk-Inventory/dialog_information.cpp ../Nobuk-Inventory/dialog_information.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		../../include/core.h \
+		../../include/database/database.h \
+		../../include/database/querys.h \
+		../../include/preprocessor.h \
+		ui_dialog_information.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/QVariant \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QAction \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qicon.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QHBoxLayout \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QLabel \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QVBoxLayout
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_information.o ../Nobuk-Inventory/dialog_information.cpp
+
+dialog_find.o: ../Nobuk-Inventory/dialog_find.cpp ../Nobuk-Inventory/dialog_find.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/QDialog \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qglobal.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qconfig.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qisenum.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlogging.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qflags.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmutex.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobject.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstring.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qchar.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qiterator.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qpair.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qregexp.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmargins.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qrect.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsize.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qpoint.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpalette.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qcolor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qrgb.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qbrush.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvector.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qregion.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qline.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtransform.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qimage.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qhash.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfont.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qcursor.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qevent.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qvariant.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qmap.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qdebug.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qlocale.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qset.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qurl.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfile.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/home/igor/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_dialog_find.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_find.o ../Nobuk-Inventory/dialog_find.cpp
 
 qrc_res.o: qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_res.o qrc_res.cpp
@@ -2634,6 +3170,12 @@ moc_dialog_additem.o: moc_dialog_additem.cpp
 
 moc_dialog_edit2.o: moc_dialog_edit2.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_edit2.o moc_dialog_edit2.cpp
+
+moc_dialog_information.o: moc_dialog_information.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_information.o moc_dialog_information.cpp
+
+moc_dialog_find.o: moc_dialog_find.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_find.o moc_dialog_find.cpp
 
 ####### Install
 

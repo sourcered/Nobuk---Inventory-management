@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->mainToolBar->setMovable(false);
-    this->setFixedSize(840,600);
+    this->setFixedSize(1000,600);
     this->setCentralWidget(ui->tableWidget);
     defaultTableWidget();
     connect(ui->tableWidget, SIGNAL(cellDoubleClicked(int,int)), this, SLOT(showDetailsItem(int,int)));
@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
     dialogEdit = new Dialog_edit2(this);
     dialogAddquantity = new Dialog_addquantity(this);
     dialogAddItem = new Dialog_additem(this);
+    dialogInformation = new Dialog_information(this);
+    dialogFind = new Dialog_find(this);
     dialogEdit->product = new nobuk::Product();
     //Well done.
     ui->statusBar->showMessage("Wellcome, Nobuk", 5000);
@@ -36,6 +38,11 @@ MainWindow::~MainWindow()
     delete dialogRemoveQuantity;
 }
 
+void MainWindow::showMessageStatusbar(QString message)
+{
+    ui->statusBar->showMessage(message, 5000);
+}
+
 void MainWindow::defaultTableWidget()
 {
     ui->tableWidget->setRowCount(70000);
@@ -46,9 +53,9 @@ void MainWindow::defaultTableWidget()
     TableHeader << "CODE" << "NAME" << "QUANTITY";
     ui->tableWidget->setHorizontalHeaderLabels(TableHeader);
     ui->tableWidget->verticalHeader()->setVisible(false);
-    ui->tableWidget->setColumnWidth(0,61);          //61
-    ui->tableWidget->setColumnWidth(1,620);         //634
-    ui->tableWidget->setColumnWidth(2,102);         //123
+    ui->tableWidget->setColumnWidth(0,65);          //61
+    ui->tableWidget->setColumnWidth(1,769);         //634
+    ui->tableWidget->setColumnWidth(2,110);         //123
 
     //No row Edit
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -76,7 +83,7 @@ void MainWindow::addItemTableWidget(int row, nobuk::Product product)
 bool MainWindow::updateTableList()
 {
     ui->tableWidget->clearContents();
-    //
+
     std::list<nobuk::Product> listProducts = core->ioDatabase->get_Products();
 
     size_t i = 0;
@@ -85,15 +92,26 @@ bool MainWindow::updateTableList()
     return true;
 }
 
+bool MainWindow::updateTableList(int id)
+{
+    nobuk::Product product = core->ioDatabase->get_Product(id);
+    QString qtd = QString::number(product.quantity) + (product.isDecimal ? " Kg" : "  ");
+    ui->tableWidget->item(id-1, 0)->setText(QString::number(product.code));
+    ui->tableWidget->item(id-1, 1)->setText(QString::fromStdString(product.name));
+    ui->tableWidget->item(id-1, 2)->setText(qtd);
+
+    return true;
+}
+
 nobuk::Product MainWindow::get_selected_item_list()
 {
     nobuk::Product product;
     int row = ui->tableWidget->currentRow();
     product.id = row+1;
-    product.code = ui->tableWidget->takeItem(row, 0)->text().toInt();
-    product.name = ui->tableWidget->takeItem(row, 1)->text().toStdString();
+    product.code = ui->tableWidget->item(row, 0)->text().toInt();
+    product.name = ui->tableWidget->item(row, 1)->text().toStdString();
 
-    std::string qtdStr = ui->tableWidget->takeItem(row, 2)->text().toStdString();
+    std::string qtdStr = ui->tableWidget->item(row, 2)->text().toStdString();
     std::string sub = qtdStr.substr(0, qtdStr.length()-2);
     product.quantity = QString::fromStdString(sub).toFloat();
 
@@ -101,6 +119,8 @@ nobuk::Product MainWindow::get_selected_item_list()
     product.isDecimal = sub == "Kg";
 
     product.price = core->ioDatabase->get_price(row+1);
+
+    product.total = core->ioDatabase->get_Total1(row+1);
 
     return product;
 }
@@ -182,10 +202,11 @@ void MainWindow::on_actionAdd_triggered()
         QMessageBox::information(this, "Error", "Error, Load first.");
         return;
     }
-    dialogAddquantity->row = ui->tableWidget->currentRow() + 1;
+    int id = ui->tableWidget->currentRow() + 1;
+    dialogAddquantity->row = id;
     dialogAddquantity->exec();
     //Update table
-    updateTableList();
+    updateTableList(id);
 }
 
 void MainWindow::on_actionRemove_triggered()
@@ -195,10 +216,11 @@ void MainWindow::on_actionRemove_triggered()
         QMessageBox::information(this, "Error", "Error, Load first.");
         return;
     }
-    dialogRemoveQuantity->row = ui->tableWidget->currentRow() + 1;
+    int id = ui->tableWidget->currentRow() + 1;
+    dialogRemoveQuantity->row = id;
     dialogRemoveQuantity->exec();
     //Update table
-    updateTableList();
+    updateTableList(id);
 }
 
 void MainWindow::on_actionEdit_triggered()
@@ -220,5 +242,24 @@ void MainWindow::on_actionEdit_triggered()
     dialogEdit->attL();
 
     dialogEdit->exec();
-    updateTableList();
+//    updateTableList();
+    updateTableList(p.id);
+}
+
+void MainWindow::on_actionInformation_triggered()
+{
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
+    nobuk::Product product = get_selected_item_list();
+    dialogInformation->updateDialogTexts(&product);
+    dialogInformation->exec();
+//    updateTableList();
+}
+
+void MainWindow::on_actionFInd_triggered()
+{
+    dialogFind->exec();
 }

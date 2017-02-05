@@ -76,9 +76,32 @@ namespace nobuk
             product.name = factory.rs->getString("name");
             product.quantity = static_cast<float>(factory.rs->getDouble("quantity"));
             product.price = static_cast<float>(factory.rs->getDouble("price"));
+            product.isDecimal = factory.rs->getInt("isdec");
             // product.total = ;
         }
         catch(sql::SQLException & ex) { std::cout << "Error: get_Product" << std::endl; }
+        return product;
+    }
+
+    Product O_database::get_ProductByCode(int code)
+    {
+        Product product;
+        try
+        {
+            factory.pstm = factory.con->prepareStatement(SQL_GET_PRODUCT_BY_CODE);
+            factory.pstm->setInt(1, code);
+            factory.rs = factory.pstm->executeQuery();
+            factory.rs->first();
+
+            product.id = factory.rs->getInt("id");
+            product.code = factory.rs->getInt("code");
+            product.name = factory.rs->getString("name");
+            product.quantity = static_cast<float>(factory.rs->getDouble("quantity"));
+            product.price = static_cast<float>(factory.rs->getDouble("price"));
+            product.isDecimal = factory.rs->getInt("isdec");
+            // product.total = ;
+        }
+        catch(sql::SQLException & ex) { std::cout << "Error: get_ProductByCode" << std::endl; }
         return product;
     }
 
