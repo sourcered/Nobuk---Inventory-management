@@ -18,9 +18,17 @@ void Dialog_getKey::on_pushButton_clicked()
 {
     int key;
     key = ui->spinBox_passoword->value();
-    if(key == 1927)
-    {
 
+    std::string str;
+
+    std::fstream infile;
+    infile.open("../../other/delete-key.txt");
+    std::getline(infile, str);
+    infile.close();
+    std::string::size_type sz = str.size();
+    int filekey = std::stoi(str, &sz);
+    if(key == filekey)
+    {
     float total = 0.0f;
     std::list<nobuk::Product> products;
     //Get All products

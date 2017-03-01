@@ -72,6 +72,8 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        QWidget::setTabOrder(spinBox_passoword, pushButton);
+        QWidget::setTabOrder(pushButton, pushButton_2);
 
         retranslateUi(Dialog_getKey);
 
