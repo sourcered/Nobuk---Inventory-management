@@ -3,6 +3,13 @@
 
 #include "../preprocessor.h"
 
+#if 0
+#ifndef FILEMANAGER_INCLUDE
+#define FILEMANAGER_INCLUDE
+#include "../core.h"
+#endif
+#endif
+
 #if 1
 
 #ifndef PRE_LOG
@@ -10,7 +17,6 @@
 const std::string DATABASE_NAME = "dbnobuk";
 const std::string TABLE_NAME = "inventory";
 const std::string USER = "root";
-const std::string PASSWORD = "friday19";
 const std::string DRIVER_URL = "tcp://127.0.0.1:3306";
 #endif
 
@@ -25,6 +31,7 @@ const std::string SQL_GET_QUANTITYS =   "SELECT quantity FROM " + TABLE_NAME;
 const std::string SQL_GET_QUANTITY =    "SELECT quantity FROM " + TABLE_NAME + " WHERE id=? LIMIT 1";
 const std::string SQL_GET_PRICE =       "SELECT price FROM " + TABLE_NAME + " WHERE id=? LIMIT 1";
 const std::string SQL_GET_TOTAL =       "SELECT total FROM " + TABLE_NAME + " WHERE id=? LIMIT 1";
+const std::string SQL_GET_TOTAL_PRODUCTS = "SELECT SUM(total) FROM " + TABLE_NAME;
 const std::string SQL_GET_TOTAL1 =      "SELECT (quantity*price) FROM " + TABLE_NAME + " WHERE id=? LIMIT 1";
 const std::string SQL_GET_TOTALs =      "SELECT (quantity*price) FROM " + TABLE_NAME;
 const std::string SQL_ADD_PRODUCT =     "INSERT INTO " + TABLE_NAME + "(code, name, quantity, price, isdec) VALUES(?, ?, ?, ?, ?)";

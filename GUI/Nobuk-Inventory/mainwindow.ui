@@ -74,6 +74,8 @@
     <addaction name="actionEdit"/>
     <addaction name="actionInformation"/>
     <addaction name="actionFInd"/>
+    <addaction name="separator"/>
+    <addaction name="actionTotal"/>
    </widget>
    <widget class="QMenu" name="menuQuantity">
     <property name="title">
@@ -211,6 +213,15 @@
    </property>
    <property name="text">
     <string>Find</string>
+   </property>
+  </action>
+  <action name="actionTotal">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/Nobuk-Inventory-Icons/About.png</normaloff>:/res/Nobuk-Inventory-Icons/About.png</iconset>
+   </property>
+   <property name="text">
+    <string>Total</string>
    </property>
   </action>
  </widget>

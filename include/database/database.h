@@ -5,6 +5,11 @@
 
 namespace nobuk
 {
+    struct FileManager
+    {
+        static std::string getPassword();
+    };
+
     struct Product
     {
         int id;
@@ -39,6 +44,7 @@ namespace nobuk
         std::list<float> get_Quantitys();           //Returns quantity product
         float get_Quantity(int);                    //Returns quantity product
         float get_Total(int);
+        float get_sum_Total();                      //Gets sum of all products
         float get_Total1(int);
         float get_price(int);
     };

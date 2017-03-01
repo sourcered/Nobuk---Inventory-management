@@ -10,7 +10,7 @@ namespace nobuk
     private:
     public:
         IO_database * ioDatabase;
-        // IO_database * ioDatabase;
+
         Core() : ioDatabase(new IO_database()) {}
         bool add_product(Product *);
         bool delete_product(int);

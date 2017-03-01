@@ -13,6 +13,7 @@
 #include "dialog_edit2.h"
 #include "dialog_information.h"
 #include "dialog_find.h"
+#include "dialog_getkey.h"
 
 namespace Ui {
 class MainWindow;
@@ -45,6 +46,7 @@ private:
     Dialog_exit * dialogExit;
     Dialog_information * dialogInformation;
     Dialog_find * dialogFind;
+    Dialog_getKey * dialogGetkey;
 
 public slots:
     void showDetailsItem(int, int);                     //Display Dialog window with informations
@@ -62,6 +64,7 @@ private slots:
     void on_actionEdit_triggered();
     void on_actionInformation_triggered();
     void on_actionFInd_triggered();
+    void on_actionTotal_triggered();
 };
 
 #endif // MAINWINDOW_H

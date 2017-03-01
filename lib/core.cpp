@@ -33,6 +33,14 @@ namespace nobuk
 
     bool Core::delete_database(int key)
     {
-        return (key == Key ? ioDatabase->drop_database() : false);
+        int filekey;
+        std::string str_filekey;
+        std::fstream infile;
+        infile.open("../other/delete-key.txt");
+        std::getline(infile, str_filekey);
+        infile.close();
+        std::string::size_type sz = str_filekey.size();
+        filekey = std::stoi(str_filekey, &sz);
+        return (filekey == Key ? ioDatabase->drop_database() : false);
     }
 }

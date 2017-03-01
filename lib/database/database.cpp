@@ -2,6 +2,16 @@
 
 namespace nobuk
 {
+    std::string FileManager::getPassword()
+    {
+        std::string pass;
+        std::fstream infile;
+        infile.open("../../other/mysql-password.txt");
+        std::getline(infile, pass);
+        infile.close();
+        return pass;
+    }
+
     Factory::Factory()
     {
         init();
@@ -25,6 +35,7 @@ namespace nobuk
     {
         sql::Driver * driver;
         driver = get_driver_instance();
+        std::string PASSWORD = FileManager::getPassword();
         std::shared_ptr<sql::Connection> tmp(driver->connect(DRIVER_URL, USER, PASSWORD));
         con = tmp;
 
@@ -99,7 +110,7 @@ namespace nobuk
             product.quantity = static_cast<float>(factory.rs->getDouble("quantity"));
             product.price = static_cast<float>(factory.rs->getDouble("price"));
             product.isDecimal = factory.rs->getInt("isdec");
-            // product.total = ;
+            product.total = product.quantity * product.price;
         }
         catch(sql::SQLException & ex) { std::cout << "Error: get_ProductByCode" << std::endl; }
         return product;
@@ -152,6 +163,18 @@ namespace nobuk
       }
       catch(sql::SQLException & ex) { std::cout << "Error: get_Total" << std::endl; }
       return quantity;
+    }
+
+    float O_database::get_sum_Total()
+    {
+        std::list<Product> productList;
+//        productList = get_Products();
+        float total = 0.0f;
+//        for(std::list<Product>::const_iterator it = productList.begin(); it != productList.end(); it++)
+//        {
+//            total += (it->quantity) * (it->price);
+//        }
+        return total;
     }
 
     float O_database::get_Total1(int id)

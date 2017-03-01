@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     dialogAddItem = new Dialog_additem(this);
     dialogInformation = new Dialog_information(this);
     dialogFind = new Dialog_find(this);
+    dialogGetkey = new Dialog_getKey(this);
     dialogEdit->product = new nobuk::Product();
     //Well done.
     ui->statusBar->showMessage("Wellcome, Nobuk", 5000);
@@ -36,6 +37,7 @@ MainWindow::~MainWindow()
     delete dialogRemoveitem;
     delete dialogAddquantity;
     delete dialogRemoveQuantity;
+    delete dialogGetkey;
 }
 
 void MainWindow::showMessageStatusbar(QString message)
@@ -163,7 +165,7 @@ void MainWindow::on_actionDelete_All_triggered()
         return;
     }
     //Dialog
-    int key = 0;    //1977
+    int key = 1977;    //1977
     if(core->delete_database(key)) QMessageBox::information(this, "Database", "All data has been deleted.");
     //Update table
     updateTableList();
@@ -261,5 +263,20 @@ void MainWindow::on_actionInformation_triggered()
 
 void MainWindow::on_actionFInd_triggered()
 {
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
     dialogFind->exec();
+}
+
+void MainWindow::on_actionTotal_triggered()
+{
+    if(core == nullptr)
+    {
+        QMessageBox::information(this, "Error", "Error, Load first.");
+        return;
+    }
+    dialogGetkey->exec();
 }
